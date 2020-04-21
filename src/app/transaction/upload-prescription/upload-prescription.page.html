@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Upload Prescription</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="header-row">
+    <ion-col>
+      <span>CHOOSE AN OPTION TO UPLOAD</span>
+    </ion-col>
+  </ion-row>
+  <ion-grid class="upload-grid">
+    <ion-row class="upload-option-row">
+      <ion-col size="4" (click)="getImages(1)">
+        <ion-icon name="camera-outline"></ion-icon>
+        <p>Camera</p>
+      </ion-col>
+      <ion-col size="4" (click)="getImages(2)">
+        <ion-icon name="images-outline"></ion-icon>
+        <p>Gallery</p>
+      </ion-col>
+      <ion-col size="4" (click)="getImages(3)">
+        <ion-icon name="document-outline"></ion-icon>
+        <p>My Prescriptions</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="upload-option-security-row">
+      <ion-col>
+        <span
+          >Your attached Prescription will be secured and private. Only our
+          pharmacist will review it</span
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-row class="header-row extra-marigin-top" *ngIf="imageArray.length">
+    <ion-col>
+      <span>Added Prescriptions</span>
+    </ion-col>
+  </ion-row>
+  <ion-grid class="upload-grid" *ngIf="imageArray.length">
+    <ion-row class="upload-prescription-image-row">
+      <ion-col size="4" *ngFor="let image of imageArray;let i=index">
+        <img [src]="image.localPath">
+        <div class="remove-button" (click)="removeItem(i)">
+          <span>Remove</span>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" (click)="uploadFiles()" [disabled]="!imageArray.length"
+      >Confirm Order</ion-button
+    >
+  </ion-toolbar>
+</ion-footer>

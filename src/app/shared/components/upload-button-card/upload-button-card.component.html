@@ -1,0 +1,24 @@
+<ion-card>
+  <ion-card-content style="padding-top: -20px;">
+    <ion-row>
+      <ion-col>
+        <div class="upload-prescription-row">
+          <div class="upload-prescription">
+            <div class="title">
+              <span>{{title}}</span>
+            </div>
+            <div class="message">
+              <span>
+               {{message}}
+              </span>
+            </div>
+            <div class="discount" *ngIf="discount">Save {{discount}}%</div>
+          </div>
+          <ion-button (click)="uploadPrescription()" size="small" shape="round" color="danger">
+            Upload
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>

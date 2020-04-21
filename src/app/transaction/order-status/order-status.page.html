@@ -1,0 +1,32 @@
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="items-center icon-col">
+        <span><ion-icon name="checkmark-circle"></ion-icon></span> 
+      </ion-col>
+    </ion-row>
+  
+    <ion-row>
+      <ion-col class="items-center text-col">
+        <span class="bold-text"> Success</span> 
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="extra-marign">
+      <ion-col class="items-center text-col">
+        <span class="order-message">You had placed the order successfully, and we are notified your request to {{marchentCount}} merchants</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-row class="ion-padding button-class">
+    <ion-col size="8" offset="2">
+      <ion-button (click)="onClick()" expand="block" size="large">
+        Go To Home
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  
+</ion-content>

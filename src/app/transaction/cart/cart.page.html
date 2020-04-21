@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary" class="main-header">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-upload-button-card (action)="uploadPrescription()" [data]="uploadCardData"></app-upload-button-card>
+  
+  <ion-grid class="medicin-search-list" *ngIf="medicinList.length">
+   <ion-row *ngFor="let medicin of medicinList">
+     <ion-col size="12">
+      <ion-row >
+        <ion-col size="3" class="medicin-avatar">
+          
+        </ion-col>
+        <ion-col size="9">
+          <ion-row>
+            <ion-col>
+              <p class="header">{{medicin.SearchResult}}</p>
+              <p class="sub-header">{{medicin.DrugDtls}}</p>
+            </ion-col>
+          </ion-row>
+          <app-cart-button [medicin]="medicin" [removeButtonDisplayStatus]="true" (cartChange)="medicinCountUpdate($event)" (removeFromCart)="removeFromCart($event)"></app-cart-button>
+        </ion-col>
+      </ion-row>
+     </ion-col>
+     <!-- <ion-col size="12" class="cart-item-footer">
+       <ion-button fill="clear" (click)="removeFromCart(medicin.Id)">REMOVE</ion-button>
+     </ion-col> -->
+   </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" (click)="goToAddressSelection()">Confirm Order</ion-button>
+  </ion-toolbar>
+</ion-footer>

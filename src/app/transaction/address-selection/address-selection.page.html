@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Select Address</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="address-row">
+      <ion-col>
+        <ion-list>
+          <ion-radio-group name="auto"  mode="md" [(ngModel)]="selectedAddress">
+            <ion-item *ngFor="let address of addressList">
+              <ion-label>
+              <p class="address-label">{{address.AddLabel}}</p>  
+              <p>{{address.Address}}</p>  
+              </ion-label>
+              <ion-radio [value]="address.AddressId" slot="end"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="primary" size="default" expand="block" fill="solid" (click)="gotoOrderSummary(selectedAddress)">Continue</ion-button>
+  </ion-toolbar>
+</ion-footer>

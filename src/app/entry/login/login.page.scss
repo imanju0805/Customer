@@ -1,0 +1,58 @@
+@mixin getLines() {
+  content: "";
+  position: relative;
+  width: 20%;
+  border-bottom: 1px solid #cccccc;
+  display: inline-block;
+  top: -4px;
+}
+.devide{
+  margin-left: 20%;
+}
+.logo{
+  margin-left: 10%;
+}
+
+ion-content {
+  
+  > ion-card {
+   
+    > ion-card-content {
+      > ion-grid {
+        > ion-row {
+          > ion-col {
+            > h3 {
+              margin: 2px 0 !important;
+              font-size: 18px;
+              font-weight: bold;
+              color: #004a8e;
+            }
+            > p {
+              margin: 0 !important;
+            }
+            > ion-item {
+              > ion-label {
+                border-right: solid thin #cccccc;
+                width: 33px;
+                max-width: 34px;
+                min-width: 10px;
+              }
+            }
+            > span {
+              &.divider-span {
+                &::before {
+                  @include getLines();
+                  margin-right: 10px;
+                }
+                &::after {
+                  @include getLines();
+                  margin-left: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

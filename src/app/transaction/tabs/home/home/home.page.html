@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary" class="main-header custom-big-toolbar">
+    <ion-title>Header</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button routerLink="/transaction/cart">
+        <ion-icon slot="icon-only" name="cart"> </ion-icon>
+        <ion-badge class="notification-badge" color="danger" *ngIf="cartCount">{{cartCount}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="primary" class="sub-header">
+    <!-- <ion-searchbar placeholder="Search" inputmode="email" type="decimal" (click)="openSearchModal()"></ion-searchbar> -->
+    <ion-row class="search-box" (click)="openSearchModal()">
+      <ion-col>
+        <ion-icon name="search"></ion-icon>
+        <span>Search</span>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <app-upload-button-card (action)="uploadPrescription()" [data]="uploadCardData"></app-upload-button-card>
+</ion-content>

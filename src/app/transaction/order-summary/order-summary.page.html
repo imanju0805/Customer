@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Order Summary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="header-row">
+    <ion-col>
+      <span>Delivery Address</span>
+    </ion-col>
+  </ion-row>
+  <ion-grid class="order-grid">
+    <ion-row class="order-row">
+      <ion-col>
+        <p *ngIf="AddressLabel" class="address-label">{{AddressLabel}}</p>
+        <p *ngIf="Address" >{{Address}}</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-row class="header-row" *ngIf="imageArray.length">
+    <ion-col>
+      <span>Prescriptions</span>
+    </ion-col>
+  </ion-row>
+
+  <ion-grid class="order-grid" *ngIf="imageArray.length">
+    <ion-row class="order-prescription-image-row">
+      <ion-col size="4" *ngFor="let image of imageArray;let i=index">
+        <img [src]="image.localPath">
+        <!-- <div class="remove-button" (click)="removeItem(i)">
+          <span>Remove</span>
+        </div> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-row class="header-row" *ngIf="medicinList.length">
+    <ion-col>
+      <span>Medicins</span>
+    </ion-col>
+  </ion-row>
+  <ion-grid class="order-grid">
+    <ion-row class="order-medicin-row" *ngFor="let medicin of medicinList;let i=index">
+      <ion-col size="1">
+        <span>{{i+1}}</span>
+      </ion-col>
+      <ion-col size="9">
+        <span>{{medicin.SearchResult}}</span>
+      </ion-col>
+      <ion-col size="2">
+        <span>{{medicin.count}}</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="primary" size="default" expand="block" fill="solid" (click)="confirmOrder()">Confirm</ion-button>
+  </ion-toolbar>
+</ion-footer>

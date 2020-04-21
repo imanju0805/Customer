@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary" class="custom-big-toolbar">
+    <ion-buttons slot="secondary">
+      <ion-button (click)="closeModal(false)">
+        <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Search Medicene</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="goToCart()">
+        <ion-icon slot="icon-only" name="cart"> </ion-icon>
+        <ion-badge class="notification-badge" color="danger" *ngIf="cartCount"
+          >{{cartCount}}</ion-badge
+        >
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-row>
+      <ion-col size="12">
+        <ion-searchbar
+          placeholder="Search Medicene"
+          inputmode="text"
+          type="text"
+          (ionChange)="onSearchChange($event)"
+          [debounce]="250"
+        ></ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="!medicinList.length">
+    <app-upload-button-card (action)="uploadPrescription()" [data]="uploadCardData"></app-upload-button-card>
+  </ion-grid>
+  <ion-grid class="medicin-search-list" *ngIf="medicinList.length">
+    <ion-row *ngFor="let medicin of showMedicin">
+      <ion-col size="3" class="medicin-avatar"> </ion-col>
+      <ion-col size="9">
+        <ion-row>
+          <ion-col>
+            <p class="header">{{medicin.SearchResult}}</p>
+            <p class="sub-header">{{medicin.DrugDtls}}</p>
+          </ion-col>
+        </ion-row>
+        <app-cart-button
+          [medicin]="medicin"
+          [addToCartButtonDisplay]="true"
+          (addToCart)="addToCart($event)"
+          *ngIf="medicin"
+        ></app-cart-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll
+    threshold="10px"
+    (ionInfinite)="loadData($event)"
+    position="bottom"
+  >
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
